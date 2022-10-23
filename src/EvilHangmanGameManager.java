@@ -35,11 +35,10 @@ public class EvilHangmanGameManager {
                 numWordsWithLength++;
             }
         }
-        if (numWordsWithLength > 0) {
-            this.wordLength = wordLength;
-        } else {
+        if (numWordsWithLength <= 0) {
             throw new IllegalArgumentException("No words with specified length in the dictionary!");
         }
+        this.wordLength = wordLength;
     }
 
     public void startGame() {
@@ -62,6 +61,9 @@ public class EvilHangmanGameManager {
     public int guess(char guess) {
         if (guess < 'a' || guess > 'z') {
             throw new IllegalArgumentException("Please enter a letter in the alphabet!");
+        }
+        if (lettersGuessed.contains(guess)) {
+            throw new IllegalArgumentException("Letter has already been guessed!");
         }
         if (!isFinished()) {
             updateWordList(guess);
