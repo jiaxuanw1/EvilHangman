@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class EvilHangmanGameManager {
@@ -177,8 +175,9 @@ public class EvilHangmanGameManager {
     }
 
     private void loadDictionary(String filepath) {
+        InputStream is = getClass().getResourceAsStream(filepath);
         try {
-            BufferedReader br = new BufferedReader(new FileReader(filepath));
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String word = br.readLine();
             while (word != null) {
                 wordList.add(word.toLowerCase());
