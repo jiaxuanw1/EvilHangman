@@ -100,7 +100,7 @@ public class EvilHangmanGUI {
                 }
                 new EvilHangmanGUIGame(game);
             } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
         contentPane.add(startGameButton);
@@ -204,16 +204,14 @@ public class EvilHangmanGUI {
             guessInput.setBounds(
                     (frame.getWidth() - guessInput.getWidth() - guessButton.getWidth()) / 2,
                     guessedLettersLabel.getY() + guessedLettersLabel.getHeight() + 20,
-                    20, 30
-            );
+                    20, 30);
             guessInput.addActionListener(e -> guessButton.doClick());
             contentPane.add(guessInput);
 
             guessButton.setBounds(
                     guessInput.getX() + guessInput.getWidth() + 10,
                     guessInput.getY(),
-                    130, guessInput.getHeight()
-            );
+                    130, guessInput.getHeight());
             guessButton.addActionListener(e -> {
                 String input = guessInput.getText().trim().toLowerCase();
                 if (input.length() != 1) {
