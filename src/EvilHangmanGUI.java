@@ -8,12 +8,12 @@ import java.util.Map;
 public class EvilHangmanGUI {
 
     public static void main(String[] args) {
-        new EvilHangmanGUI();
+        SwingUtilities.invokeLater(EvilHangmanGUI::new);
     }
 
     public EvilHangmanGUI() {
         JFrame frame = new JFrame("Evil Hangman");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Dimension frameSize = new Dimension(260, 250);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -126,11 +126,12 @@ public class EvilHangmanGUI {
             this.game = game;
 
             frame = new JFrame("Evil Hangman Game");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Dimension frameSize = new Dimension(575, 375);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             int leftBound = (screenSize.width - frameSize.width) / 2;
             int upperBound = (screenSize.height - frameSize.height) / 2;
-            frame.setBounds(leftBound, upperBound, (int) frameSize.getWidth(), (int) frameSize.getHeight());
+            frame.setBounds(leftBound, upperBound, frameSize.width, frameSize.height);
             frame.setResizable(false);
 
             JPanel contentPane = new JPanel();

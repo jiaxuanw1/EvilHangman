@@ -33,7 +33,7 @@ public class EvilHangmanGameManager {
                 numWordsWithLength++;
             }
         }
-        if (numWordsWithLength <= 0) {
+        if (numWordsWithLength == 0) {
             throw new IllegalArgumentException("No words with specified length in the dictionary!");
         }
         this.wordLength = wordLength;

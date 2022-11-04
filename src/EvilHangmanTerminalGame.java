@@ -61,9 +61,11 @@ public class EvilHangmanTerminalGame {
             // Player loses
             else {
                 System.out.println("\nYou lose!");
-                System.out.println("The word was: " + game.getWordList().get(0));
+                System.out.println("The word was: " + game.getWordList().get((int) (Math.random() * game.getWordList().size())));
             }
         } while (promptPlayAgain());
+
+        scanner.close();
     }
 
     private char promptGuess(EvilHangmanGameManager game) {
